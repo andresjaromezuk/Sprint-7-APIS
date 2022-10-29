@@ -69,9 +69,6 @@ window.addEventListener('load', function(){
     
         const imageError = document.querySelector('#imageError')
         
-        if(image.value == "" ){
-            feedback = "Debes cargar imágenes del producto"
-        } 
 
         if(image.value != "" ){
 

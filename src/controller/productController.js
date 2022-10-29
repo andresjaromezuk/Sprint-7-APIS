@@ -347,19 +347,23 @@ const productController = {
                 imagesProducts.push({name: image.filename, productId: id})
             })
 
-            let imagesToDestroy = await Image.destroy({
-                where: {
-                    productId: id
-                }
-            })
-
-            let images = await Image.bulkCreate(imagesProducts, {
-                where: {
-                    productId: id
-                }})
-           
-                return res.redirect('/')
             
+            if (imagesProducts.length > 0){
+                
+                let imagesToDestroy = await Image.destroy({
+                    where: {
+                        productId: id
+                    }
+                })
+
+                let images = await Image.bulkCreate(imagesProducts, {
+                    where: {
+                        productId: id
+                    }})
+            }
+
+                return res.redirect('/')
+           
         } catch (error) {
              res.json(error.msg)
         }
